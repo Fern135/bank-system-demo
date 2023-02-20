@@ -12,8 +12,8 @@ class Database {
           console.error(err.message);
             
         } else {
-          this.createDb();
-          this.createTable();
+          // this.createDb();
+          // this.createTable();
           console.log('Connected to the database.');
 
         }
@@ -22,6 +22,11 @@ class Database {
     }catch(err){
       console.error(`error in db: ${err.toString()}`);
     }
+  }
+
+  create(){
+    this.createDb();
+    this.createTable();
   }
 
   createDb(){ // creating the db
