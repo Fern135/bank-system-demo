@@ -47,6 +47,21 @@ app.post('/api/controllers/user/sign_up', async (request, response) => {
     }
 });
 
+app.post('/api/controllers/user/login', async (request, response) => {
+    try{
+
+        const data = request.body; // same as flask data = json.load(request.data)
+        
+        console.warn(data);
+        
+        response.sendStatus(200); // sending back status code
+
+    }catch(error){
+        console.error(error.toString());
+        response.sendStatus(500);
+    }
+});
+
 app.listen(PORT, () => {
     console.clear();
     console.log(`Listening on port ${PORT}`);
