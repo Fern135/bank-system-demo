@@ -12,6 +12,7 @@ class Database {
           console.error(err.message);
             
         } else {
+          this.createDb();
           this.createTable();
           console.log('Connected to the database.');
 
