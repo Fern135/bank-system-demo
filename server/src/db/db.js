@@ -1,13 +1,16 @@
 const sqlite3 = require('sqlite3').verbose();
+const fs      = require('fs');
+const util    = require("../util/util");
+const DT      = require("../date/date");
 
-
-class Database {
+class Database extends util {
   /**
    * 
    * @param { database name } db_name 
    */
   constructor(db_name="bankingDefault") {
     try{
+      super(util);
       this.db = new sqlite3.Database(`./${db_name}.db`, (err) => {
         if (err) {
           console.error(err.message);
@@ -20,8 +23,34 @@ class Database {
         }
       });
 
-    }catch(err){
-      console.error(`error in db: ${err.toString()}`);
+    }catch(error){
+      console.error(`error in db: ${this.toString(error)}`);
+    }
+  }
+
+  /**
+   * 
+   * @param {where the sql file is located to run} scriptFilePath 
+   */
+  runSqlScriptFile(scriptFilePath) {
+    const date = new DT(); // DT not a constructor? what? 
+    try{
+      const script = fs.readFileSync(scriptFilePath, 'utf8');
+      this.db.exec(script, function (err) {
+        if (err) {
+          console.error('Error running script:', err);
+        } else {
+          console.log('Script executed successfully');
+        }
+      });
+
+    }catch(error){
+      console.error(super.toString(error));
+      
+      const err = `\n${date.getTime12()} | ${date.getDayOfWeek()} |\n
+      ${date.getMonth()} / ${date.getDate()} / ${date.getFullYear()}|\n
+      ${super.toString(error)}`;
+      this.writeToFile("../../log/", err);
     }
   }
 
@@ -88,13 +117,17 @@ class Database {
    * close the connection
    */
   close() {
-    this.db.close((err) => {
-      if (err) {
-        console.error(err.message);
-      } else {
-        console.log('Closed the database connection.');
-      }
-    });
+    try{
+      this.db.close((err) => {
+        if (err) {
+          console.error(err.message);
+        } else {
+          console.log('Closed the database connection.');
+        }
+      });
+    }catch(error){
+      console.error(this.toString(error));
+    }
   }
 }
 

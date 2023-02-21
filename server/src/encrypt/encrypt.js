@@ -1,8 +1,10 @@
 const crypto = require('crypto');
+const util = require("../util/util");
+
 
 class Encryption {
   constructor(key) {
-    this.key = key;
+    this.key       = key;
     this.algorithm = 'aes-256-cbc';
   }
 

@@ -17,12 +17,13 @@ app.use(bodyParser.json());  // using json
 const PORT          = process.env.PORT || 3000;
 const emailUserName = process.env.emailUserName;
 const emailPassword = process.env.emailPassword;
+const secretKey     = process.env.secret_key;
 //#endregion
 
 //#region classes used
 const db    = new Database(); /* get, all methods need await example: const rows = await db.all(sql); */
 const email = new Email(emailUserName, emailPassword);
-// const enc   = Encryption();
+const enc   = new Encryption(secretKey);
 //#endregion
 
 /*
@@ -70,6 +71,7 @@ app.post('/api/controllers/user/login', async (request, response) => {
 });
 
 app.listen(PORT, () => {
+    db.runSqlScriptFile("../server/src/db/sql/banking.sql");
     console.clear();
     console.log(`Listening on port ${PORT}`);
 });
