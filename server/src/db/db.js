@@ -1,5 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 
+
 class Database {
   /**
    * 
@@ -14,7 +15,7 @@ class Database {
         } else {
           // this.createDb();
           // this.createTable();
-          console.log('Connected to the database.');
+          console.info('Connected to the database.');
 
         }
       });
@@ -22,25 +23,6 @@ class Database {
     }catch(err){
       console.error(`error in db: ${err.toString()}`);
     }
-  }
-
-  create(){
-    this.createDb();
-    this.createTable();
-  }
-
-  createDb(){ // creating the db
-    this.db.run(`CREATE DATABASE ${this.db_name};`)
-  }
-
-  /**
-   * creates a table default user
-   */
-  createTable() {
-    const table = `CREATE TABLE IF NOT EXISTS users 
-      (id INTEGER PRIMARY KEY AUTOINCREMENT,
-      user_name varchar(100), full_name varchar(100), password varchar(255) email varchar(100))`;
-    this.db.run(table);
   }
 
   /**

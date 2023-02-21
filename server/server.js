@@ -4,18 +4,25 @@ const Database      = require("./src/db/db"); //<============ connecting to loca
 const Email         = require("./src/email/email")//<======== sending email
 const Encryption    = require("./src/encrypt/encrypt");//<=== encryption functionality
 
+
 const app = express();
 
 
 //#region middle-ware
+require('dotenv').config();
 app.use(bodyParser.json());  // using json
-
 //#endregion
 
 //#region constants
-const PORT  = process.env.PORT || 3000;
+const PORT          = process.env.PORT || 3000;
+const emailUserName = process.env.emailUserName;
+const emailPassword = process.env.emailPassword;
+//#endregion
+
+//#region classes used
 const db    = new Database(); /* get, all methods need await example: const rows = await db.all(sql); */
-const email = new Email();
+const email = new Email(emailUserName, emailPassword);
+// const enc   = Encryption();
 //#endregion
 
 /*

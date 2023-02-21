@@ -4,12 +4,12 @@ const util = require('util');
 const readFile = util.promisify(fs.readFile);
 
 class Email {
-  constructor() {
+  constructor(emailUserName, emailPassword) {
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'your-email@gmail.com',
-        pass: 'your-password',
+        user: emailUserName,
+        pass: emailPassword,
       },
     });
   }
