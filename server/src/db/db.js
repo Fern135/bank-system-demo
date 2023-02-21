@@ -48,10 +48,11 @@ class Database extends util {
     }catch(error){
       console.error(super.toString(error));
       
+      //TODO: Not important but get this working at one point in time
       const err = `\n${DT.getTime12()} | ${DT.getDayOfWeek()} |\n
       ${DT.getMonth()} / ${DT.getDate()} / ${DT.getFullYear()}|\n
       ${super.toString(error)}`;
-      super.writeToFile("../../log/", err);
+      super.writeToFile("./log/", err);
     }
   }
 

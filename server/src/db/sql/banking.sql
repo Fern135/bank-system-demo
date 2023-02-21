@@ -36,7 +36,7 @@ CREATE TABLE `car_loan` (
   `monthly_payment` varchar(50) NOT NULL,
   `external_routing_payment` varchar(50) NOT NULL,
   `external_acc_num_payment` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINe = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE `compound_investing` (
   `routing` varchar(50) NOT NULL,
   `compound_interest_percent` varchar(255) NOT NULL,
   `invest_num` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,7 @@ CREATE TABLE `house_loan` (
   `apr` varchar(255) NOT NULL,
   `monthly_payment` varchar(255) NOT NULL,
   `payment_due` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -86,7 +86,7 @@ CREATE TABLE `loan` (
   `apr` varchar(50) NOT NULL,
   `monthly_payment` varchar(255) NOT NULL,
   `payment_due` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET  utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET  utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -100,7 +100,7 @@ CREATE TABLE `main_account` (
   `saving` varchar(255) NOT NULL,
   `routing` varchar(50) NOT NULL,
   `account_number` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,7 @@ CREATE TABLE `user` (
   `api_key` varchar(255) NOT NULL,
   `routing` varchar(50) NOT NULL,
   `account_number` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET = utf8mb4;
+) ENGINe = InnoDB DEFAULT CHARSET = utf8mb4;
 
 --
 -- Indexes for dumped tables
