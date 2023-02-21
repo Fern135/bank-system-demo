@@ -3,6 +3,8 @@ const fs      = require('fs');
 const util    = require("../util/util");
 const DT      = require("../date/date");
 
+// const date = new DT(); // DT not a constructor? what? 
+
 class Database extends util {
   /**
    * 
@@ -33,7 +35,6 @@ class Database extends util {
    * @param {where the sql file is located to run} scriptFilePath 
    */
   runSqlScriptFile(scriptFilePath) {
-    const date = new DT(); // DT not a constructor? what? 
     try{
       const script = fs.readFileSync(scriptFilePath, 'utf8');
       this.db.exec(script, function (err) {
@@ -47,10 +48,10 @@ class Database extends util {
     }catch(error){
       console.error(super.toString(error));
       
-      const err = `\n${date.getTime12()} | ${date.getDayOfWeek()} |\n
-      ${date.getMonth()} / ${date.getDate()} / ${date.getFullYear()}|\n
+      const err = `\n${DT.getTime12()} | ${DT.getDayOfWeek()} |\n
+      ${DT.getMonth()} / ${DT.getDate()} / ${DT.getFullYear()}|\n
       ${super.toString(error)}`;
-      this.writeToFile("../../log/", err);
+      super.writeToFile("../../log/", err);
     }
   }
 

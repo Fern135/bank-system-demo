@@ -25,7 +25,9 @@ class Util{
      * @param {what we're writing} data 
      */
     writeToFile(filePath, data){
-        fs.writeFile(filePath, data, (err) => {
+        const FilePath = path.join(__dirname, filePath, 'log.txt');
+
+        fs.writeFile(FilePath, data, (err) => {
             if (err) {
               console.error(err);
             } else {
