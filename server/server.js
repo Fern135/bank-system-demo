@@ -9,7 +9,7 @@ const app = express();
 
 
 //#region middle-ware
-require('dotenv').config();
+require('dotenv').config();  // getting data from .env files
 app.use(bodyParser.json());  // using json
 //#endregion
 
