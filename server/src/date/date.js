@@ -37,3 +37,5 @@ class DT {
         return this.days[this.d.getDay()];
     }
 }
+
+module.exports = DT;

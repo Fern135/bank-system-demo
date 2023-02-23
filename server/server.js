@@ -4,9 +4,7 @@ const Database      = require("./src/db/db"); //<============ connecting to loca
 const Email         = require("./src/email/email")//<======== sending email
 const Encryption    = require("./src/encrypt/encrypt");//<=== encryption functionality
 
-
 const app = express();
-
 
 //#region middle-ware
 require('dotenv').config();  // getting data from .env files
@@ -71,7 +69,7 @@ app.post('/api/controllers/user/login', async (request, response) => {
 });
 
 app.listen(PORT, () => {
-    db.runSqlScriptFile("../server/src/db/sql/banking.sql");
+    db.run(`CREATE DATABASE databasename;`);
     console.clear();
     console.log(`Listening on port ${PORT}`);
 });

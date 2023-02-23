@@ -12,21 +12,19 @@ class Database extends util {
    */
   constructor(db_name="bankingDefault") {
     try{
-      super(util);
+      super(util);//<================================================= to use the methods in the util class
       this.db = new sqlite3.Database(`./${db_name}.db`, (err) => {
         if (err) {
           console.error(err.message);
             
         } else {
-          // this.createDb();
-          // this.createTable();
           console.info('Connected to the database.');
 
         }
       });
 
     }catch(error){
-      console.error(`error in db: ${this.toString(error)}`);
+      console.error(`error in db: ${super.toString(error)}`);
     }
   }
 
@@ -40,8 +38,10 @@ class Database extends util {
       this.db.exec(script, function (err) {
         if (err) {
           console.error('Error running script:', err);
+
         } else {
           console.log('Script executed successfully');
+          
         }
       });
 
