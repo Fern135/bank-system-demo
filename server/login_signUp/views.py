@@ -13,7 +13,7 @@ house_load     = HouseLoan()
 car_loan       = CarLoan()
 c_investing    = CompoundInvesting()
 
-def index(request):
+def index(request): # todo: find a way to make this more secure for apis
     return csrf.get_token(request)
     
 
