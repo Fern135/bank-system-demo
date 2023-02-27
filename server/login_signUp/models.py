@@ -55,7 +55,7 @@ class Loan(models.Model):
         return self.name
 
 
-class HouseLoad(models.Model):
+class HouseLoan(models.Model):
     _id                     = models.AutoField(primary_key=True)
     ext_routing_payment     = models.CharField(max_length=150)
     ext_acct_num_payment    = models.CharField(max_length=150)

@@ -2,3 +2,6 @@ django
 
 pip-check
 pip-review
+
+colorama
+python-dotenv
