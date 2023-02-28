@@ -1,9 +1,9 @@
 from django.urls import path
-from .views import login, signUp, forgot, index
+from . import views
 
 urlpatterns = [
-    path("api/controllers/security/get_csrf", index, name="index"), # may need to change this
-    path('api/controllers/user/login/', login, name='login'),
-    path('api/controllers/user/signUp/', signUp, name='signUp'),
-    path('api/controllers/user/forgot/', forgot, name='forgot'),
+    path("api/controllers/security/get_csrf",   views.index, name="index"), # may need to change this
+    path('api/controllers/user/login/',         views.login, name='login'),
+    path('api/controllers/user/signUp/',        views.signUp, name='signUp'),
+    path('api/controllers/user/forgot/',        views.forgot, name='forgot'),
 ]
