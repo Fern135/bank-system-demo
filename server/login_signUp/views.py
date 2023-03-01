@@ -6,12 +6,12 @@ import json
 from lib.util.util import generateAPIKey, rnd
 from .models import MainAccount ,User ,Loan ,HouseLoan ,CarLoan ,CompoundInvesting
 
-main_account   = MainAccount()
-user           = User()
-loan           = Loan()
-house_load     = HouseLoan()
-car_loan       = CarLoan()
-c_investing    = CompoundInvesting()
+main_account        = MainAccount()
+user                = User()
+loan                = Loan()
+house_load          = HouseLoan()
+car_loan            = CarLoan()
+compound_investing  = CompoundInvesting()
 
 def index(request):
     return csrf.get_token(request)
