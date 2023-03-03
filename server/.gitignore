@@ -3,3 +3,5 @@ venv
 __pychache__
 
 .DS_Store
+
+test_db.sqlite3.backup

@@ -84,6 +84,14 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'bank.sqlite3',
+    },
+    'test': {
+        # cp bank.sqlite3 test_db.sqlite3.backup // backup
+
+        # Then, copy the database to the new test database file:
+        # sqlite3 bank.sqlite3 .dump | sqlite3 test_db.sqlite3
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'test_db.sqlite3', 
     }
 }
 
