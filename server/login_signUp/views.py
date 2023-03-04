@@ -40,19 +40,95 @@ def signUp(request):
 
             print(data)
 
-            user_name   = data['user_name']
-            password    = data['password']
-            email       = data['email']
-            api_key     = generateAPIKey(150)
-            routing_num = rnd(10)
-            acct_num    = rnd(10)
+            # checking if the initial savings and checking is not set
+            if data['savings_init'] is not None and data['checking_init'] is not None:
+                f_name = data['full_name']
+                User_name    = data['user_name']
+                password     = data['password']
+                email        = data['email']
+                checkingN    = data['checking_init']
+                savings      = data['savings_init']
+                api_key      = generateAPIKey(150)
+                routing_nums = rnd(10)
+                acct_num     = rnd(10)
+                
+            else:
+                checkingN = 0
+                savings = 0
+
+
 
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON data.'}, status=400)
 
         # process data here
+        mAccount = MainAccount(
+            checking    = checkingN,
+            saving      = savings,
+            routing_num = routing_nums, # should be the same
+            account_num = acct_num # should be the same
+        )
+        usr = User(
+            full_name   = f_name,
+            user_name   = User_name,
+            email       = email,
+            password    = password,
+            api_key     = api_key,
+            routing_num = routing_nums, # should be the same
+            account_num = acct_num # should be the same
+        )
+        loan = Loan(
+            ext_routing_payment     = 0,
+            ext_acct_num_payment    = 0,
+            loan_Size               = 0,
+            apr                     = 0,
+            monthly_payment         = 0,
+            payment_due             = 0,
+            routing_num             = routing_nums,  # should be the same
+            account_num             = acct_num  # should be the same
+        )
+        House_Loan = HouseLoan(
+            ext_routing_payment     = 0,
+            ext_acct_num_payment    = 0,
+            loan_Size               = 0,
+            apr                     = 0,
+            monthly_payment         = 0,
+            payment_due             = 0,
+            routing_num             = routing_nums,  # should be the same
+            account_num             = acct_num  # should be the same
+        )
+        car_loan = CarLoan(
+            ext_routing_payment     = 0,
+            ext_acct_num_payment    = 0,
+            loan_Size               = 0,
+            apr                     = 0,
+            monthly_payment         = 0,
+            payment_due             = 0,
+            routing_num             = routing_nums,  # should be the same
+            account_num             = acct_num  # should be the same
+        )
+        compound_investing = CompoundInvesting(
+            Compound_interest_Percent = 0.0,
+            invest_num                = 0,
+            routing_num               = routing_nums,  # should be the same
+            account_num               = acct_num  # should be the same
+        )
 
-        
+        try:
+            mAccount.save()
+            usr.save()
+            loan.save()
+            House_Loan.save()
+            car_loan.save()
+            compound_investing.save()
+
+        except Exception as e:
+            return JsonResponse(
+                {
+                    "message": "Error",
+                    "error-msg": str(e)
+                }
+            )
 
         return JsonResponse(
                 {
