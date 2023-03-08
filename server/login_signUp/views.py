@@ -79,8 +79,8 @@ def signUp(request):
             email       = email,
             password    = password,
             api_key     = api_key,
-            routing_num = routing_nums, # should be the same
-            account_num = acct_num # should be the same
+            routing_num = routing_nums, # should be the same as the MainAccount
+            account_num = acct_num # should be the same as the MainAccount
         )
         loan = Loan(
             ext_routing_payment     = 0,
