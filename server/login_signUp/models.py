@@ -23,10 +23,7 @@ class User(models.Model):
     password    = models.CharField(max_length=255)
     api_key     = models.CharField(max_length=255)
 
-    # having it connected to the main account 
-    # routing_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
-    # account_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
-    
+    # having it connected to the main account     
     routing_num = models.IntegerField()
     account_num = models.IntegerField()
 
@@ -46,8 +43,6 @@ class Loan(models.Model):
     # date and time that it's due before a late fee is set
     payment_due          = models.CharField(max_length=150) 
 
-    # routing_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
-    # account_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
     routing_num = models.IntegerField()
     account_num = models.IntegerField()
 
@@ -65,9 +60,6 @@ class HouseLoan(models.Model):
 
     # date and time that it's due before a late fee is set
     payment_due = models.CharField(max_length=150)
-
-    # routing_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
-    # account_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
 
     routing_num = models.IntegerField()
     account_num = models.IntegerField()
@@ -87,9 +79,6 @@ class CarLoan(models.Model):
     # date and time that it's due before a late fee is set
     payment_due = models.CharField(max_length=150)
 
-    # routing_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
-    # account_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
-
     routing_num = models.IntegerField()
     account_num = models.IntegerField()
 
@@ -102,9 +91,6 @@ class CompoundInvesting(models.Model):
     id                        = models.AutoField(primary_key=True)
     Compound_interest_Percent = models.CharField(max_length=255)
     invest_num                = models.CharField(max_length=255)
-
-    # routing_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
-    # account_num = models.ForeignKey(MainAccount, on_delete=models.CASCADE)
 
     routing_num = models.IntegerField()
     account_num = models.IntegerField()

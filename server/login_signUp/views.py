@@ -42,21 +42,26 @@ def signUp(request):
 
             # checking if the initial savings and checking is not set
             if data['savings_init'] is not None and data['checking_init'] is not None:
-                f_name = data['full_name']
-                User_name    = data['user_name']
-                password     = data['password']
-                email        = data['email']
-                checkingN    = data['checking_init']
-                savings      = data['savings_init']
-                api_key      = generateAPIKey(150)
-                routing_nums = rnd(10)
-                acct_num     = rnd(10)
+                full_name       = data['full_name']
+                User_name       = data['user_name']
+                password        = data['password']
+                email           = data['email']
+                api_key         = generateAPIKey(150)
+                routing_nums    = rnd(10)
+                acct_num        = rnd(10)
+                checkingN       = data['checking_init']
+                savings         = data['savings_init']
                 
             else:
-                checkingN = 0
-                savings = 0
-
-
+                full_name       = data['full_name']
+                User_name       = data['user_name']
+                password        = data['password']
+                email           = data['email']
+                api_key         = generateAPIKey(150)
+                routing_nums    = rnd(10)
+                acct_num        = rnd(10)
+                checkingN       = 0.0
+                savings         = 0.0
 
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON data.'}, status=400)
@@ -69,7 +74,7 @@ def signUp(request):
             account_num = acct_num # should be the same
         )
         usr = User(
-            full_name   = f_name,
+            full_name   = full_name,
             user_name   = User_name,
             email       = email,
             password    = password,

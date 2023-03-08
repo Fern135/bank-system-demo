@@ -1,12 +1,10 @@
-from .django_cr_sign.PK_Signer import *
-from .util.util   import *
-from .search.search import Search
-from .sort.sort   import *
+from .django_cr_sign.PK_Signer  import *
+from .util.util                 import *
+from .search.search             import Search
+from .sort.sort                 import *
 from .email.v2_email_controller import *
 from .email.v1_email_controller import *
-
-# a star pathfinding algorithm for zunny and trash panda use
-from .a_star.aStar import ASTAR
+from .schedule_code.schedule    import *
 
 #region the sorting / searching algorithm testing / importing
 # built in packages

@@ -5,3 +5,6 @@ pip-review
 
 colorama
 python-dotenv
+
+# to run scripts after a certain amount of time
+schedule
